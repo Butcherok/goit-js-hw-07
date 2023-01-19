@@ -1,8 +1,5 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-console.log(galleryItems);
-console.log(document);
-
 const imagesContainer = document.querySelector('.gallery');
 const imagesMarkup = createImageGallery(galleryItems);
 
@@ -32,5 +29,7 @@ function onImgClick(event) {
     if (!event.target.classList.contains('gallery__image')) {
         return;
     }
-    return console.log(event.target.dataset.source);
+    const openImgOriginal = basicLightbox.create(`
+		<img width="1400" height="900" src="${event.target.dataset.source}">
+	`).show()
 };
