@@ -6,13 +6,12 @@ const imagesContainer = document.querySelector('.gallery');
 const imagesMarkup = createImageGallery(galleryItems);
 
 imagesContainer.insertAdjacentHTML('beforeend', imagesMarkup);
-// imagesContainer.addEventListener('click', onImgClick);
 
 function createImageGallery(galleryItems) {
     return galleryItems
     .map(({preview, original, description}) => {
         return `
-        <a class="gallery__item" href="large-image.jpg">
+        <a class="gallery__item" href="${original}">
             <img
                 class="gallery__image"
                 src="${preview}"
@@ -24,3 +23,7 @@ function createImageGallery(galleryItems) {
     .join('');
 };
 
+new SimpleLightbox('.gallery .gallery__item', {
+    captionData: "alt",
+    captionDelay: 250,
+});
