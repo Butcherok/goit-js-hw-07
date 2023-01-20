@@ -31,5 +31,14 @@ function onImgClick(event) {
     }
     const openImgOriginal = basicLightbox.create(`
 		<img width="1400" height="900" src="${event.target.dataset.source}">
-	`).show()
+	`, {
+        onShow: instance => {
+            document.onkeydown = function (e) {
+                e.preventDefault();
+                if (e.code == 'Escape') {
+                instance.close();
+                }
+            };
+        }
+    }).show();
 };
